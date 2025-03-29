@@ -75,7 +75,7 @@
     {
       "id": "retimeKeyframes",
       "name": "Retime Keyframes",
-      "category": "Animation",
+      "category": "Keyframes",
       "description": "Retimes keyframes for selected properties using multiple modes.",
       "fileUrl": "https://github.com/pretzel-dev/ae-automation-scripts/raw/refs/heads/main/retimeKeyframes.jsx",
       "version": "1.0"
