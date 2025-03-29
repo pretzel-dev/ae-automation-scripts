@@ -3,7 +3,7 @@
     {
       "id": "fillComp",
       "name": "Fill Comp",
-      "category": "Automation / Scaling",
+      "category": "Scaling",
       "description": "Applies a scale expression with padding controls. Adds a 'Padding Value' slider and a 'Percent Based' checkbox to each selected layer.",
       "fileUrl": "https://github.com/pretzel-dev/ae-automation-scripts/raw/refs/heads/main/fillComp.jsx",
       "version": "1.0"
@@ -11,7 +11,7 @@
     {
       "id": "fitComp",
       "name": "Fit Comp",
-      "category": "Automation / Scaling",
+      "category": "Scaling",
       "description": "Applies a scale expression with fit logic using sourceRectAtTime. Fits the layer's content within the comp boundaries using a padding value and a percent-based toggle.",
       "fileUrl": "https://github.com/pretzel-dev/ae-automation-scripts/raw/refs/heads/main/fitComp.jsx",
       "version": "1.0"
@@ -19,7 +19,7 @@
     {
       "id": "pinPosition",
       "name": "Pin Position",
-      "category": "Automation / Positioning",
+      "category": "Positioning",
       "description": "Positions layers based on a user-selected pin location. Uses a dropdown for pin position along with padding controls to adjust layer placement.",
       "fileUrl": "https://github.com/pretzel-dev/ae-automation-scripts/raw/refs/heads/main/pinPosition.jsx",
       "version": "1.0"
@@ -27,7 +27,7 @@
     {
       "id": "scaleText",
       "name": "Scale Text",
-      "category": "Automation / Text",
+      "category": Text",
       "description": "Scales text layers so that their effective width does not exceed a specified 'Max Width'. Adds controls for 'Max Width', 'Base Scale', 'Continuous' updating, and 'Sample Time'.",
       "fileUrl": "https://github.com/pretzel-dev/ae-automation-scripts/raw/refs/heads/main/scaleText.jsx",
       "version": "1.0"
