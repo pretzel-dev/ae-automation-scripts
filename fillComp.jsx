@@ -1,18 +1,16 @@
-// Apply Scale Expression with Padding Controls Script (Updated)
+// Apply Scale Expression with Padding Controls Script (No Alerts)
 // This script adds a "Padding Value" slider (default 0) and a "Percent Based" checkbox to each selected layer,
 // then applies a scale expression that adapts to either pixel or percentage-based padding.
 (function() {
     // Ensure we have an active comp
     var comp = app.project.activeItem;
     if (!(comp && comp instanceof CompItem)) {
-        alert("Please select or open a composition first.");
         return;
     }
     
     // Ensure layers are selected
     var selectedLayers = comp.selectedLayers;
     if (selectedLayers.length === 0) {
-        alert("Please select one or more layers.");
         return;
     }
     
@@ -71,6 +69,4 @@
     }
     
     app.endUndoGroup();
-    
-    alert("Expression applied to selected layers.");
 })();
