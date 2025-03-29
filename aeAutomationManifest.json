@@ -27,7 +27,7 @@
     {
       "id": "scaleText",
       "name": "Scale Text",
-      "category": Text",
+      "category": "Text",
       "description": "Scales text layers so that their effective width does not exceed a specified 'Max Width'. Adds controls for 'Max Width', 'Base Scale', 'Continuous' updating, and 'Sample Time'.",
       "fileUrl": "https://github.com/pretzel-dev/ae-automation-scripts/raw/refs/heads/main/scaleText.jsx",
       "version": "1.0"
