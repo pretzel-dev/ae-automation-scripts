@@ -3,7 +3,7 @@
     {
       "id": "fillComp",
       "name": "Fill Comp",
-      "category": "Automation / Scaling",
+      "category": "Scaling",
       "description": "Applies a scale expression with padding controls. Adds a 'Padding Value' slider and a 'Percent Based' checkbox to each selected layer.",
       "fileUrl": "https://github.com/pretzel-dev/ae-automation-scripts/raw/refs/heads/main/fillComp.jsx",
       "version": "1.0"
@@ -11,7 +11,7 @@
     {
       "id": "fitComp",
       "name": "Fit Comp",
-      "category": "Automation / Scaling",
+      "category": "Scaling",
       "description": "Applies a scale expression with fit logic using sourceRectAtTime. Fits the layer's content within the comp boundaries using a padding value and a percent-based toggle.",
       "fileUrl": "https://github.com/pretzel-dev/ae-automation-scripts/raw/refs/heads/main/fitComp.jsx",
       "version": "1.0"
@@ -19,7 +19,7 @@
     {
       "id": "pinPosition",
       "name": "Pin Position",
-      "category": "Automation / Positioning",
+      "category": "Positioning",
       "description": "Positions layers based on a user-selected pin location. Uses a dropdown for pin position along with padding controls to adjust layer placement.",
       "fileUrl": "https://github.com/pretzel-dev/ae-automation-scripts/raw/refs/heads/main/pinPosition.jsx",
       "version": "1.0"
@@ -46,6 +46,22 @@
       "category": "Text",
       "description": "Animates numbers in text with support for prefix and suffix. Formats numbers with commas and fixed decimals, using animation parameters for smooth transitions.",
       "fileUrl": "https://github.com/pretzel-dev/ae-automation-scripts/raw/refs/heads/main/numberCounterAdvanced.jsx",
+      "version": "1.0"
+    },
+    {
+      "id": "fadeAudio",
+      "name": "Fade Audio",
+      "category": "Audio",
+      "description": "Fades audio levels either at the layer's end or at the comp's end using a combined expression with a 'Fade Duration' slider and 'Fade Mode' dropdown control.",
+      "fileUrl": "https://github.com/pretzel-dev/ae-automation-scripts/raw/refs/heads/main/fadeAudio.jsx",
+      "version": "1.0"
+    },
+    {
+      "id": "fadeInOut",
+      "name": "Fade In/Out",
+      "category": "Opacity",
+      "description": "Applies an opacity fade-in from the layer's inPoint and fade-out at its outPoint using 'Fade In' and 'Fade Out' slider controls.",
+      "fileUrl": "https://github.com/pretzel-dev/ae-automation-scripts/raw/refs/heads/main/fadeInOut.jsx",
       "version": "1.0"
     }
   ]
