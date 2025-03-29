@@ -18,7 +18,7 @@
     },
     {
       "id": "pinPosition",
-      "name": "Pin Position",
+      "name": "Pin Position to Comp",
       "category": "Positioning",
       "description": "Pin layer to a corner of the comp.",
       "fileUrl": "https://github.com/pretzel-dev/ae-automation-scripts/raw/refs/heads/main/pinPosition.jsx",
@@ -26,9 +26,9 @@
     },
     {
       "id": "pinPositionLayer",
-      "name": "Pin Position (Layer)",
+      "name": "Pin Position to Layer",
       "category": "Positioning",
-      "description": "Pin layer to a target layer's corner. Uses a target layer's dimensions (via sourceRectAtTime) with padding and percentage options.",
+      "description": "Pin layer to a corner of a specified layer.",
       "fileUrl": "https://github.com/pretzel-dev/ae-automation-scripts/raw/refs/heads/main/pinPositionLayer.jsx",
       "version": "1.0"
     },
