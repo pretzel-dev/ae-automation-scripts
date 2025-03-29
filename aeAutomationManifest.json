@@ -71,6 +71,14 @@
       "description": "Fades opacity at in or out of layer.",
       "fileUrl": "https://github.com/pretzel-dev/ae-automation-scripts/raw/refs/heads/main/fadeInOut.jsx",
       "version": "1.0"
+    },
+    {
+      "id": "retimeKeyframes",
+      "name": "Retime Keyframes",
+      "category": "Animation",
+      "description": "Retimes keyframes for selected properties using multiple modes.",
+      "fileUrl": "https://github.com/pretzel-dev/ae-automation-scripts/raw/refs/heads/main/retimeKeyframes.jsx",
+      "version": "1.0"
     }
   ]
 }
