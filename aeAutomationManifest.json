@@ -17,12 +17,12 @@
       "version": "1.0"
     },
     {
-      "id": "pinPosition",
+      "id": "pinPositionComp",
       "name": "Pin Position to Comp",
       "category": "Positioning",
       "description": "Pin layer to a corner of the comp.",
-      "fileUrl": "https://github.com/pretzel-dev/ae-automation-scripts/raw/refs/heads/main/pinPosition.jsx",
-      "version": "1.0"
+      "fileUrl": "https://github.com/pretzel-dev/ae-automation-scripts/raw/refs/heads/main/pinPositionComp.jsx",
+      "version": "1.1"
     },
     {
       "id": "pinPositionLayer",
