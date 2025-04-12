@@ -7,9 +7,23 @@
     
     app.beginUndoGroup("Apply [PP1] Pin Position Expression");
 
-    // Updated expression with [PP1] tracking marker
+    // Embed the configuration in a comment.
+    // Here we specify that:
+    //   • "Pin Position" is a dropdown with options,
+    //   • "Padding X" and "Padding Y" are sliders (min 0 and max 100),
+    //   • "Percent Based" is a checkbox.
+    var configJSON = '{"controls": {' +
+      '"Pin Position": {"type": "dropdown", "options": [' +
+           '"Top Left", "Top Center", "Top Right", ' +
+           '"Middle Left", "Middle Center", "Middle Right", ' +
+           '"Bottom Left", "Bottom Center", "Bottom Right"]},' +
+      '"Padding X": {"type": "slider", "min": 0, "max": 100},' +
+      '"Padding Y": {"type": "slider", "min": 0, "max": 100},' +
+      '"Percent Based": {"type": "checkbox"}' +
+    '}}';
+
     var expr = 
-    '/* [PP1] */\n' +
+    '/* [PP1] config: ' + configJSON + ' */\n' +
     'var pinPoint = effect("[PP1] Pin Position")("Menu").value;\n' +
     'var padX = effect("[PP1] Padding X")("Slider").value;\n' +
     'var padY = effect("[PP1] Padding Y")("Slider").value;\n' +
@@ -32,12 +46,16 @@
         var layer = selectedLayers[i];
         var effects = layer.property("ADBE Effect Parade");
         
-        // Remove any existing "[PP1] Pin Position" control.
-        var pinPos = effects.property("[PP1] Pin Position");
-        if (pinPos) pinPos.remove();
+        // Remove any existing "[PP1]" controls.
+        var ppNames = ["[PP1] Pin Position", "[PP1] Padding X", "[PP1] Padding Y", "[PP1] Percent Based"];
+        for (var k = 0; k < ppNames.length; k++){
+            var ctrl = effects.property(ppNames[k]);
+            if (ctrl) { ctrl.remove(); }
+        }
         
-        // Add a new Dropdown Control for Pin Position with ID.
-        pinPos = effects.addProperty("ADBE Dropdown Control");
+        // Add a Dropdown Control for Pin Position.
+        var pinPos = effects.addProperty("ADBE Dropdown Control");
+        // Now assign the name to the first property’s property group.
         var dp = pinPos.property(1).setPropertyParameters([
             "Top Left", "Top Center", "Top Right",
             "Middle Left", "Middle Center", "Middle Right",
@@ -45,30 +63,21 @@
         ]);
         dp.propertyGroup(1).name = "[PP1] Pin Position";
 
-        // Remove the old Padding point control and add two slider controls for Padding X and Padding Y.
-        var padXCtrl = effects.property("[PP1] Padding X");
-        if (!padXCtrl){
-            padXCtrl = effects.addProperty("ADBE Slider Control");
-            padXCtrl.name = "[PP1] Padding X";
-        }
+        // Add Slider Controls for Padding X and Padding Y.
+        var padXCtrl = effects.addProperty("ADBE Slider Control");
+        padXCtrl.name = "[PP1] Padding X";
         padXCtrl.property("Slider").setValue(0);
         
-        var padYCtrl = effects.property("[PP1] Padding Y");
-        if (!padYCtrl){
-            padYCtrl = effects.addProperty("ADBE Slider Control");
-            padYCtrl.name = "[PP1] Padding Y";
-        }
+        var padYCtrl = effects.addProperty("ADBE Slider Control");
+        padYCtrl.name = "[PP1] Padding Y";
         padYCtrl.property("Slider").setValue(0);
         
-        // Add or update the Percent Based checkbox with ID.
-        var pctCtrl = effects.property("[PP1] Percent Based");
-        if (!pctCtrl){
-            pctCtrl = effects.addProperty("ADBE Checkbox Control");
-            pctCtrl.name = "[PP1] Percent Based";
-        }
+        // Add a Checkbox Control for Percent Based.
+        var pctCtrl = effects.addProperty("ADBE Checkbox Control");
+        pctCtrl.name = "[PP1] Percent Based";
         pctCtrl.property("Checkbox").setValue(0);
         
-        // Apply the expression to the Position property.
+        // Apply the expression (with the embedded config comment) to the Position property.
         layer.property("ADBE Transform Group").property("ADBE Position").expression = expr;
     }
 
