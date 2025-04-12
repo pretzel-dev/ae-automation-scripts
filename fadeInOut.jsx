@@ -16,10 +16,17 @@
     
     app.beginUndoGroup("Apply " + id + " Opacity Fade Expression");
 
-    // Expression that uses two sliders: "Fade In" and "Fade Out"
-    // It applies a fade-in from the layer's inPoint and a fade-out at the layer's outPoint.
-    // "Fade In" and "Fade Out" are in seconds.
+    // Define a configuration object for your fade controls.
+    // In this example, the fade in/out durations are defined (in seconds).
+    var configJSON = '{"controls": {' +
+        '"Fade In": {"type": "slider", "min": 0, "max": 10},' +
+        '"Fade Out": {"type": "slider", "min": 0, "max": 10}' +
+    '}}';
+
+    // Embed the configuration into the expression comment.
+    // This comment is what the dynamic panel will search for.
     var expr =
+    '/* ' + id + ' config: ' + configJSON + ' */\n' +
     'var fadeIn = effect("' + id + ' Fade In")("Slider").value;\n' +
     'var fadeOut = effect("' + id + ' Fade Out")("Slider").value;\n' +
     'if (time < inPoint + fadeIn) {\n' +
@@ -35,7 +42,7 @@
         var layer = selectedLayers[i];
         var effects = layer.property("ADBE Effect Parade");
         
-        // Add the "Fade In" slider control if it doesn't exist.
+        // Add the "Fade In" slider control (named with your id)
         var fadeInCtrl = effects.property(id + " Fade In");
         if(!fadeInCtrl){
             fadeInCtrl = effects.addProperty("ADBE Slider Control");
@@ -43,7 +50,7 @@
             fadeInCtrl.property("Slider").setValue(1);
         }
         
-        // Add the "Fade Out" slider control if it doesn't exist.
+        // Add the "Fade Out" slider control (named with your id)
         var fadeOutCtrl = effects.property(id + " Fade Out");
         if(!fadeOutCtrl){
             fadeOutCtrl = effects.addProperty("ADBE Slider Control");
