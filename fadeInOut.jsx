@@ -1,4 +1,7 @@
 (function(){
+    // Define your unique ID here.
+    var id = "[PP2]";
+    
     // Ensure an active comp and that layers are selected.
     var comp = app.project.activeItem;
     if(!(comp && comp instanceof CompItem)){
@@ -11,14 +14,14 @@
         return;
     }
     
-    app.beginUndoGroup("Apply Opacity Fade Expression");
+    app.beginUndoGroup("Apply " + id + " Opacity Fade Expression");
 
     // Expression that uses two sliders: "Fade In" and "Fade Out"
     // It applies a fade-in from the layer's inPoint and a fade-out at the layer's outPoint.
     // "Fade In" and "Fade Out" are in seconds.
     var expr =
-    'var fadeIn = effect("Fade In")("Slider").value;\n' +
-    'var fadeOut = effect("Fade Out")("Slider").value;\n' +
+    'var fadeIn = effect("' + id + ' Fade In")("Slider").value;\n' +
+    'var fadeOut = effect("' + id + ' Fade Out")("Slider").value;\n' +
     'if (time < inPoint + fadeIn) {\n' +
     '    ease((time - inPoint) / fadeIn, 0, 1) * value;\n' +
     '} else if (time > outPoint - fadeOut) {\n' +
@@ -26,25 +29,25 @@
     '} else {\n' +
     '    value;\n' +
     '}';
-    
+
     // Loop through each selected layer.
     for(var i = 0; i < selectedLayers.length; i++){
         var layer = selectedLayers[i];
         var effects = layer.property("ADBE Effect Parade");
         
-        // Add "Fade In" slider control if it doesn't exist.
-        var fadeInCtrl = effects.property("Fade In");
+        // Add the "Fade In" slider control if it doesn't exist.
+        var fadeInCtrl = effects.property(id + " Fade In");
         if(!fadeInCtrl){
             fadeInCtrl = effects.addProperty("ADBE Slider Control");
-            fadeInCtrl.name = "Fade In";
+            fadeInCtrl.name = id + " Fade In";
             fadeInCtrl.property("Slider").setValue(1);
         }
         
-        // Add "Fade Out" slider control if it doesn't exist.
-        var fadeOutCtrl = effects.property("Fade Out");
+        // Add the "Fade Out" slider control if it doesn't exist.
+        var fadeOutCtrl = effects.property(id + " Fade Out");
         if(!fadeOutCtrl){
             fadeOutCtrl = effects.addProperty("ADBE Slider Control");
-            fadeOutCtrl.name = "Fade Out";
+            fadeOutCtrl.name = id + " Fade Out";
             fadeOutCtrl.property("Slider").setValue(1);
         }
         
