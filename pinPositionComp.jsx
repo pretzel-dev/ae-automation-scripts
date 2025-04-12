@@ -1,6 +1,6 @@
 (function(){
     // Define your unique ID in one place.
-    var id = "[AS1]";
+    var id = "[PP1]";
     
     // Ensure an active comp and selected layers exist.
     var comp = app.project.activeItem;
