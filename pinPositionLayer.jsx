@@ -13,18 +13,11 @@
     
     app.beginUndoGroup("Apply Pin-to-Target Expression (Target Scale Included)");
 
-    // Expression:
-    // This expression pins the current layer's position to a chosen corner of a target layer.
-    // It uses target.toComp() on the corners of the target's sourceRectAtTime, which automatically
-    // takes into account the target layer's transform (including scaling, rotation, etc.).
-    // Controls:
-    //   "Pin Position" (Dropdown Menu): selects which corner (1-9).
-    //   "Padding" (Point Control): separate X and Y offsets.
-    //   "Percent Based" (Checkbox): if 1, padding is interpreted as a percentage of the target's dimensions.
-    //   "Target Layer" (Layer Control): the layer to which the current layer is pinned.
+    // Expression updated to use Padding X and Padding Y sliders.
     var expr =
     'var pinPoint = effect("Pin Position")("Menu").value;\n' +
-    'var pad = effect("Padding")("Point").value;\n' +
+    'var padX = effect("Padding X")("Slider").value;\n' +
+    'var padY = effect("Padding Y")("Slider").value;\n' +
     'var usePercent = effect("Percent Based")("Checkbox").value;\n' +
     'var target = effect("Target Layer")("Layer");\n' +
     'if (target == null) { value; } else {\n' +
@@ -40,7 +33,7 @@
     '    var bottomRight = target.toComp([tRect.left + tRect.width, tRect.top + tRect.height]);\n' +
     '    var corners = [topLeft, topCenter, topRight, middleLeft, middleCenter, middleRight, bottomLeft, bottomCenter, bottomRight];\n' +
     '    var basePos = corners[Math.round(pinPoint)-1];\n' +
-    '    var paddingCalc = (usePercent==1) ? [ tRect.width*(pad[0]/100), tRect.height*(pad[1]/100) ] : pad;\n' +
+    '    var paddingCalc = (usePercent==1) ? [ tRect.width*(padX/100), tRect.height*(padY/100) ] : [padX, padY];\n' +
     '    basePos + paddingCalc;\n' +
     '}';
 
@@ -51,9 +44,9 @@
         // Remove any existing "Pin Position" control.
         var pinPosCtrl = effects.property("Pin Position");
         if (pinPosCtrl) { pinPosCtrl.remove(); }
+        
         // Add new Dropdown Control for "Pin Position".
         pinPosCtrl = effects.addProperty("ADBE Dropdown Control");
-        // Rename its parameter group to "Pin Position" using a workaround.
         var dp = pinPosCtrl.property(1).setPropertyParameters([
             "Top Left", "Top Center", "Top Right",
             "Middle Left", "Middle Center", "Middle Right",
@@ -61,13 +54,20 @@
         ]);
         dp.propertyGroup(1).name = "Pin Position";
         
-        // Add or retrieve the "Padding" point control.
-        var padCtrl = effects.property("Padding");
-        if (!padCtrl){
-            padCtrl = effects.addProperty("ADBE Point Control");
-            padCtrl.name = "Padding";
+        // Remove the old Padding point control and add two slider controls for Padding.
+        var padXCtrl = effects.property("Padding X");
+        if (!padXCtrl){
+            padXCtrl = effects.addProperty("ADBE Slider Control");
+            padXCtrl.name = "Padding X";
         }
-        padCtrl.property("Point").setValue([0, 0]);
+        padXCtrl.property("Slider").setValue(0);
+        
+        var padYCtrl = effects.property("Padding Y");
+        if (!padYCtrl){
+            padYCtrl = effects.addProperty("ADBE Slider Control");
+            padYCtrl.name = "Padding Y";
+        }
+        padYCtrl.property("Slider").setValue(0);
         
         // Add or retrieve the "Percent Based" checkbox control.
         var percentCtrl = effects.property("Percent Based");
