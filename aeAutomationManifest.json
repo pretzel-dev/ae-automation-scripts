@@ -70,7 +70,7 @@
       "category": "Opacity",
       "description": "Fades opacity at in or out of layer.",
       "fileUrl": "https://github.com/pretzel-dev/ae-automation-scripts/raw/refs/heads/main/fadeInOut.jsx",
-      "version": "2.1"
+      "version": "2.2"
     },
     {
       "id": "retimeKeyframes",
