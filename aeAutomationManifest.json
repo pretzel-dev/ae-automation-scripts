@@ -22,7 +22,7 @@
       "category": "Positioning",
       "description": "Pin layer to a corner of the comp.",
       "fileUrl": "https://github.com/pretzel-dev/ae-automation-scripts/raw/refs/heads/main/pinPositionComp.jsx",
-      "version": "1.4"
+      "version": "2.0"
     },
     {
       "id": "pinPositionLayer",
