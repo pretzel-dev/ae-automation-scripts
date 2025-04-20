@@ -6,7 +6,11 @@
       "category": "Scaling",
       "description": "Fill layer to comp.",
       "fileUrl": "https://github.com/pretzel-dev/ae-automation-scripts/raw/refs/heads/main/fillComp.jsx",
-      "version": "1.0"
+      "version": "1.0",
+      "media": {
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1743691478813-d44ca4cbdc04"
+      }
     },
     {
       "id": "fitComp",
