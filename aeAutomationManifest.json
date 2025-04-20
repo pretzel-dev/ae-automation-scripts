@@ -5,6 +5,7 @@
       "name": "Fill Comp",
       "category": "Scaling",
       "description": "Fill layer to comp.",
+      "instructions": "Step-by-step instructions for how to use this tool effectively.",
       "fileUrl": "https://github.com/pretzel-dev/ae-automation-scripts/raw/refs/heads/main/fillComp.jsx",
       "version": "1.0",
       "media": {
